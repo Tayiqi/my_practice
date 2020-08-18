@@ -62,6 +62,7 @@ def shell_sort():
     sublist_count = len(a)//4
     while sublist_count > 0:
         for start_position in range(sublist_count):
+            #print(str(start_position)+","+str(sublist_count))
             gap_insertion_sort(a,start_position,sublist_count)
         sublist_count = sublist_count//4
     return a
@@ -70,13 +71,14 @@ def gap_insertion_sort(a,start_position,sublist_count):
     for index in range(start_position+sublist_count,len(a),sublist_count):
         current_value = a[index]
         position = index
+        #print(str(index))
         while position >= sublist_count and a[position-sublist_count]>current_value:
             a[position] = a[position-sublist_count]
             position = position -sublist_count
         a[position] = current_value
 
 a = [11,12,20,10,9,8,7,30,6,5,4,3,2,1,40,1200,400,500,4210,78129,12984,0]
-insertion_sort()
+
 
 T1 = timeit.Timer("maopao_sort()","from __main__ import maopao_sort")
 T2 = timeit.Timer("k_maopao_sort()","from __main__ import k_maopao_sort")
@@ -88,7 +90,3 @@ print("K—maopao: ",T2.timeit(10000))
 print("selection: ",T3.timeit(10000))
 print("insertion: ",T4.timeit(10000))
 print("shell: ",T5.timeit(10000))
-# print(len(a))
-# print(shell_sort())
-
-
